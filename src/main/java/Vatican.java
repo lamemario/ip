@@ -103,6 +103,27 @@ public class Vatican {
                         ui.showAdded(newEvent, taskList.getSize());
                         break;
 
+                    case "delete":
+                        if (parts.length < 2 || parts[1].trim().isEmpty())
+                            throw new VaticanException("you tryna delete what? You forgot the number, fam.");
+                        try {
+                            int deleteIndex = Integer.parseInt(parts[1]) - 1;
+
+                            // Check if the number is valid
+                            if (deleteIndex < 0 || deleteIndex >= taskList.getSize()) {
+                                throw new VaticanException("That number is a wasteyute. It doesn't exist, styll.");
+                            }
+
+                            // Get the task before deleting it (so we can show it)
+                            Task taskToDelete = taskList.getTask(deleteIndex);
+                            taskList.deleteTask(deleteIndex);
+
+                            ui.showDeleted(taskToDelete, taskList.getSize());
+                        } catch (NumberFormatException e) {
+                            throw new VaticanException("That number is a wasteyute. It doesn't exist, styll.");
+                        }
+                        break;
+
                     default:
                         throw new VaticanException("I don't know what that means. Nize that.");
                 }
@@ -110,8 +131,6 @@ public class Vatican {
                 ui.showError(e.getMessage());
             }
         }
-
-
         ui.showGoodbye();
         scanner.close();
     }

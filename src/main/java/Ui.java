@@ -40,7 +40,7 @@ public class Ui {
         showLine();
         System.out.println(" Got it. I've added this blessing, styll:");
         System.out.println("   " + task);
-        System.out.println(" Now you have " + totalSize + " tasks in the list.");
+        System.out.println(" Now you have " + totalSize + " tasks in the list. Dun know.");
         showLine();
     }
 
@@ -53,6 +53,14 @@ public class Ui {
     public void showError(String message) {
         showLine();
         System.out.println(" Two twos my word fam, " + message);
+        showLine();
+    }
+
+    public void showDeleted(Task task, int remainingCount) {
+        showLine();
+        System.out.println(" Say less. I've removed this task:");
+        System.out.println("   " + task);
+        System.out.println(" Now you have " + remainingCount + " tasks in the list.");
         showLine();
     }
 }

@@ -1,24 +1,35 @@
+import java.util.ArrayList;
+
 public class TaskList {
-    private Task[] tasks = new Task[100];
-    private int taskCount = 0;
+    private ArrayList<Task> tasks;
+
+    public TaskList() {
+        this.tasks = new ArrayList<>();
+    }
 
     public void addTask(Task task) {
-        tasks[taskCount++] = task;
+        tasks.add(task);
+    }
+
+    public void deleteTask(int index) {
+        tasks.remove(index);
     }
 
     public void markTask(int index) {
-        tasks[index].markAsDone();
+        Task task = tasks.get(index);
+        task.markAsDone();
     }
 
     public void unmarkTask(int index) {
-        tasks[index].unmarkAsDone();
+        Task task = tasks.get(index);
+        task.markAsNotDone();
     }
 
     public Task getTask(int index) {
-        return tasks[index];
+        return tasks.get(index);
     }
 
     public int getSize() {
-        return taskCount;
+        return tasks.size();
     }
 }
