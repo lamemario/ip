@@ -49,4 +49,10 @@ public class Ui {
         System.out.println(" Wallahi, I'm out here. Say less.");
         showLine();
     }
+
+    public void showError(String message) {
+        showLine();
+        System.out.println(" Two twos my word fam, " + message);
+        showLine();
+    }
 }

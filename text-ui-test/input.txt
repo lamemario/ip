@@ -1,9 +1,20 @@
+list
 todo read book
 deadline return book /by Sunday
 event project meeting /from Mon 2pm /to 4pm
-list
-mark 1
-mark 2
-unmark 1
+blah
+todo
+todo
+deadline
+deadline return book
+event
+event project meeting
+event project meeting /from Mon 2pm
+mark
+mark 100
+mark abc
+unmark
+unmark 100
+unmark abc
 list
 bye

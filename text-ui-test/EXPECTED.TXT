@@ -10,6 +10,9 @@ ____________________________________________________________
  So, what's the deal? I'm tryna see how I can bless you.
 ____________________________________________________________
 ____________________________________________________________
+ Check the list out, styll:
+____________________________________________________________
+____________________________________________________________
  Got it. I've added this blessing, styll:
    [T][ ] read book
  Now you have 1 tasks in the list.
@@ -25,29 +28,38 @@ ____________________________________________________________
  Now you have 3 tasks in the list.
 ____________________________________________________________
 ____________________________________________________________
+ Two twos my word fam, I don't know what that means. Nize that.
+____________________________________________________________
+ Two twos my word fam, you're moving loose. The description cannot be empty, styll.
+____________________________________________________________
+ Two twos my word fam, you're moving loose. The description cannot be empty, styll.
+____________________________________________________________
+ Two twos my word fam, you're moving loose. The description cannot be empty, styll.
+____________________________________________________________
+ Two twos my word fam, mans need a date! You forgot '/by', are you dumb?
+____________________________________________________________
+ Two twos my word fam, you're moving loose. The description cannot be empty, styll.
+____________________________________________________________
+ Two twos my word fam, you need a start AND end time (/from & /to).
+____________________________________________________________
+ Two twos my word fam, you need a start AND end time (/from & /to).
+____________________________________________________________
+ Two twos my word fam, Who am I marking? You forgot the number, fam.
+____________________________________________________________
+ Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
+____________________________________________________________
+ Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
+____________________________________________________________
+ Two twos my word fam, Who am I unmarking? Don't cheese me, give me a number.
+____________________________________________________________
+ Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
+____________________________________________________________
+ Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
+____________________________________________________________
  Check the list out, styll:
  1.[T][ ] read book
  2.[D][ ] return book (by: Sunday)
  3.[E][ ] project meeting (from: Mon 2pm to: 4pm)
-____________________________________________________________
-____________________________________________________________
- Big moves. I've marked this as done, styll:
-   [T][X] read book
-____________________________________________________________
-____________________________________________________________
- Big moves. I've marked this as done, styll:
-   [D][X] return book (by: Sunday)
-____________________________________________________________
-____________________________________________________________
- High key, I've marked this as not done yet:
-   [T][ ] read book
-____________________________________________________________
-____________________________________________________________
- Check the list out, styll:
- 1.[T][ ] read book
- 2.[D][X] return book (by: Sunday)
- 3.[E][ ] project meeting (from: Mon 2pm to: 4pm)
-____________________________________________________________
 ____________________________________________________________
  Wallahi, I'm out here. Say less.
 ____________________________________________________________

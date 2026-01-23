@@ -11,8 +11,6 @@ public class Vatican {
                      \\/ \\__,_|\\__|_|\\___\\__,_|_| |_|
             """;
 
-        String horizontalLine = "____________________________________________________________";
-
         // Ui components
         Ui ui = new Ui();
         TaskList taskList = new TaskList();
@@ -22,60 +20,98 @@ public class Vatican {
 
         boolean isExit = false;
 
-        while(!isExit) {
+        while(scanner.hasNextLine() && !isExit) {
             String input = scanner.nextLine();
             String[] parts = input.split(" ", 2);
             String command = parts[0].toLowerCase();
 
-            switch (command) {
-                case "bye":
-                    isExit = true;
-                    break;
+            try {
+                switch (command) {
+                    case "bye":
+                        isExit = true;
+                        break;
 
-                case "list":
-                    ui.showTaskList(taskList);
-                    break;
+                    case "list":
+                        ui.showTaskList(taskList);
+                        break;
 
-                case "mark":
-                    int markIndex = Integer.parseInt(parts[1]) - 1;
-                    taskList.markTask(markIndex);
-                    ui.showMarked(taskList.getTask(markIndex));
-                    break;
+                    case "mark":
+                        if (parts.length < 2)
+                            throw new VaticanException("Who am I marking? You forgot the number, fam.");
+                        try {
+                            int markIndex = Integer.parseInt(parts[1]) - 1;
+                            // >>> FIX: Check if index is too high!
+                            if (markIndex < 0 || markIndex >= taskList.getSize()) {
+                                throw new VaticanException("That number is a wasteyute. It doesn't exist, styll.");
+                            }
+                            taskList.markTask(markIndex);
+                            ui.showMarked(taskList.getTask(markIndex));
+                        } catch (NumberFormatException e) {
+                            throw new VaticanException("That number is a wasteyute. It doesn't exist, styll.");
+                        }
+                        break;
 
-                case "unmark":
-                    int unmarkIndex = Integer.parseInt(parts[1]) - 1;
-                    taskList.unmarkTask(unmarkIndex);
-                    ui.showUnmarked(taskList.getTask(unmarkIndex));
-                    break;
+                    case "unmark":
+                        if (parts.length < 2)
+                            throw new VaticanException("Who am I unmarking? Don't cheese me, give me a number.");
+                        try {
+                            int unmarkIndex = Integer.parseInt(parts[1]) - 1;
+                            // >>> FIX: Check if index is too high!
+                            if (unmarkIndex < 0 || unmarkIndex >= taskList.getSize()) {
+                                throw new VaticanException("That number is a wasteyute. It doesn't exist, styll.");
+                            }
+                            taskList.unmarkTask(unmarkIndex);
+                            ui.showUnmarked(taskList.getTask(unmarkIndex));
+                        } catch (NumberFormatException e) {
+                            throw new VaticanException("That number is a wasteyute. It doesn't exist, styll.");
+                        }
+                        break;
 
-                case "todo":
-                    Task newTodo = new Todo(parts[1]);
-                    taskList.addTask(newTodo);
-                    ui.showAdded(newTodo, taskList.getSize());
-                    break;
+                    case "todo":
+                        if (parts.length < 2 || parts[1].trim().isEmpty()) {
+                            throw new VaticanException("you're moving loose. The description cannot be empty, styll.");
+                        }
+                        Task newTodo = new Todo(parts[1]);
+                        taskList.addTask(newTodo);
+                        ui.showAdded(newTodo, taskList.getSize());
+                        break;
 
-                case "deadline":
-                    String[] dParts = parts[1].split(" /by ");
-                    Task newDeadline = new Deadline(dParts[0], dParts[1]);
-                    taskList.addTask(newDeadline);
-                    ui.showAdded(newDeadline, taskList.getSize());
-                    break;
+                    case "deadline":
+                        if (parts.length < 2 || parts[1].trim().isEmpty()) {
+                            throw new VaticanException("you're moving loose. The description cannot be empty, styll.");
+                        }
+                        String[] dParts = parts[1].split(" /by ");
+                        if (dParts.length < 2) {
+                            throw new VaticanException("mans need a date! You forgot '/by', are you dumb?");
+                        }
+                        Task newDeadline = new Deadline(dParts[0], dParts[1]);
+                        taskList.addTask(newDeadline);
+                        ui.showAdded(newDeadline, taskList.getSize());
+                        break;
 
-                case "event":
-                    String[] eParts = parts[1].split(" /from ");
-                    String[] timeParts = eParts[1].split(" /to ");
-                    Task newEvent = new Event(eParts[0], timeParts[0], timeParts[1]);
-                    taskList.addTask(newEvent);
-                    ui.showAdded(newEvent, taskList.getSize());
-                    break;
+                    case "event":
+                        if (parts.length < 2 || parts[1].trim().isEmpty()) {
+                            throw new VaticanException("you're moving loose. The description cannot be empty, styll.");
+                        }
+                        String[] eParts = parts[1].split(" /from ");
+                        if (eParts.length < 2 || !eParts[1].contains(" /to ")) {
+                            throw new VaticanException("you need a start AND end time (/from & /to).");
+                        }
+                        String[] timeParts = eParts[1].split(" /to ");
+                        Task newEvent = new Event(eParts[0], timeParts[0], timeParts[1]);
+                        taskList.addTask(newEvent);
+                        ui.showAdded(newEvent, taskList.getSize());
+                        break;
 
-                default:
-                    Task genericTask = new Todo(input);
-                    taskList.addTask(genericTask);
-                    ui.showAdded(genericTask, taskList.getSize());
-                    break;
+                    default:
+                        throw new VaticanException("I don't know what that means. Nize that.");
+                }
+            } catch (VaticanException e) {
+                ui.showError(e.getMessage());
             }
         }
+
+
         ui.showGoodbye();
         scanner.close();
     }
