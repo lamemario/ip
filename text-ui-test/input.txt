@@ -1,20 +1,34 @@
 list
-todo read book
-deadline return book /by Sunday
-event project meeting /from Mon 2pm /to 4pm
-blah
+todo read basics
+deadline submit assignment /by Tuesday
+event team meeting /from 2pm /to 4pm
+TODO check caps lock
+DeaDline mixed case /by Wednesday
+Event weird spacing      /from    5pm    /to    6pm
 todo
 todo
 deadline
 deadline return book
+deadline return book /by
 event
-event project meeting
-event project meeting /from Mon 2pm
+event project launch
+event project launch /from Mon 9am
 mark
+mark one
+mark 0
 mark 100
-mark abc
 unmark
+unmark two
+unmark -5
 unmark 100
-unmark abc
+delete
+delete 100
+delete 0
+delete abc
+blah
+gibberish command
+mark 1
+unmark 1
+delete 1
 list
 bye
