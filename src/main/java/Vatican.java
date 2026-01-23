@@ -14,6 +14,9 @@ public class Vatican {
         String horizontalLine = "____________________________________________________________";
         Scanner scanner = new Scanner(System.in);
 
+        String[] tasks = new String[100];
+        int taskCount = 0;
+
         System.out.println(horizontalLine);
         System.out.println(logo);
         System.out.println(" More life. It's Vatican, dun know.");
@@ -25,11 +28,19 @@ public class Vatican {
 
             if (input.equalsIgnoreCase("bye")) {
                 break;
+            } else if (input.equalsIgnoreCase("list")) {
+                System.out.println(horizontalLine);
+                for (int i = 0; i < taskCount; i++) {
+                    System.out.println(" " + (i + 1) + ". " + tasks[i]);
+                }
+                System.out.println(horizontalLine);
+            } else {
+                tasks[taskCount] = input;
+                taskCount++;
+                System.out.println(horizontalLine);
+                System.out.println(" added: " + input);
+                System.out.println(horizontalLine);
             }
-
-            System.out.println(horizontalLine);
-            System.out.println(" " + input);
-            System.out.println(horizontalLine);
         }
 
         System.out.println(horizontalLine);
