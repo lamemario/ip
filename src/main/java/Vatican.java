@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Vatican {
     public static void main(String[] args) {
         String logo = """
@@ -10,14 +12,25 @@ public class Vatican {
             """;
 
         String horizontalLine = "____________________________________________________________";
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println(horizontalLine);
         System.out.println(logo);
-        System.out.println(" Hello! I'm Vatican");
-        System.out.println(" What can I do for you?");
+        System.out.println(" More life. It's Vatican, dun know.");
+        System.out.println(" So, what's the deal? I'm tryna see how I can bless you.");
         System.out.println(horizontalLine);
 
-        System.out.println(" Bye. Hope to see you again soon!");
-        System.out.println(horizontalLine);
+        while (true) {
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("bye")) {
+                break;
+            }
+
+            System.out.println(horizontalLine);
+            System.out.println(" " + input);
+            System.out.println(horizontalLine);
+        }
     }
+
 }
