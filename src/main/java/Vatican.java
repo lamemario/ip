@@ -48,10 +48,31 @@ public class Vatican {
                     ui.showUnmarked(taskList.getTask(unmarkIndex));
                     break;
 
+                case "todo":
+                    Task newTodo = new Todo(parts[1]);
+                    taskList.addTask(newTodo);
+                    ui.showAdded(newTodo, taskList.getSize());
+                    break;
+
+                case "deadline":
+                    String[] dParts = parts[1].split(" /by ");
+                    Task newDeadline = new Deadline(dParts[0], dParts[1]);
+                    taskList.addTask(newDeadline);
+                    ui.showAdded(newDeadline, taskList.getSize());
+                    break;
+
+                case "event":
+                    String[] eParts = parts[1].split(" /from ");
+                    String[] timeParts = eParts[1].split(" /to ");
+                    Task newEvent = new Event(eParts[0], timeParts[0], timeParts[1]);
+                    taskList.addTask(newEvent);
+                    ui.showAdded(newEvent, taskList.getSize());
+                    break;
+
                 default:
-                    // Treat everything else as adding a new task
-                    taskList.addTask(input);
-                    ui.showAdded(input);
+                    Task genericTask = new Todo(input);
+                    taskList.addTask(genericTask);
+                    ui.showAdded(genericTask, taskList.getSize());
                     break;
             }
         }

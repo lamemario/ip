@@ -36,9 +36,11 @@ public class Ui {
         showLine();
     }
 
-    public void showAdded(String description) {
+    public void showAdded(Task task, int totalSize) {
         showLine();
-        System.out.println(" added: " + description);
+        System.out.println(" Got it. I've added this blessing, styll:");
+        System.out.println("   " + task);
+        System.out.println(" Now you have " + totalSize + " tasks in the list.");
         showLine();
     }
 
