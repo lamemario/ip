@@ -21,4 +21,30 @@ public class Ui {
         }
         showLine();
     }
+
+    public void showMarked(Task task) {
+        showLine();
+        System.out.println(" Big moves. I've marked this as done, styll:");
+        System.out.println("   " + task);
+        showLine();
+    }
+
+    public void showUnmarked(Task task) {
+        showLine();
+        System.out.println(" High key, I've marked this as not done yet:");
+        System.out.println("   " + task);
+        showLine();
+    }
+
+    public void showAdded(String description) {
+        showLine();
+        System.out.println(" added: " + description);
+        showLine();
+    }
+
+    public void showGoodbye() {
+        showLine();
+        System.out.println(" Wallahi, I'm out here. Say less.");
+        showLine();
+    }
 }

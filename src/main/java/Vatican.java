@@ -12,40 +12,50 @@ public class Vatican {
             """;
 
         String horizontalLine = "____________________________________________________________";
+
+        // Ui components
+        Ui ui = new Ui();
+        TaskList taskList = new TaskList();
         Scanner scanner = new Scanner(System.in);
 
-        String[] tasks = new String[100];
-        int taskCount = 0;
+        ui.showWelcome(logo);
 
-        System.out.println(horizontalLine);
-        System.out.println(logo);
-        System.out.println(" More life. It's Vatican, dun know.");
-        System.out.println(" So, what's the deal? I'm tryna see how I can bless you.");
-        System.out.println(horizontalLine);
+        boolean isExit = false;
 
-        while (true) {
+        while(!isExit) {
             String input = scanner.nextLine();
+            String[] parts = input.split(" ", 2);
+            String command = parts[0].toLowerCase();
 
-            if (input.equalsIgnoreCase("bye")) {
-                break;
-            } else if (input.equalsIgnoreCase("list")) {
-                System.out.println(horizontalLine);
-                for (int i = 0; i < taskCount; i++) {
-                    System.out.println(" " + (i + 1) + ". " + tasks[i]);
-                }
-                System.out.println(horizontalLine);
-            } else {
-                tasks[taskCount] = input;
-                taskCount++;
-                System.out.println(horizontalLine);
-                System.out.println(" added: " + input);
-                System.out.println(horizontalLine);
+            switch (command) {
+                case "bye":
+                    isExit = true;
+                    break;
+
+                case "list":
+                    ui.showTaskList(taskList);
+                    break;
+
+                case "mark":
+                    int markIndex = Integer.parseInt(parts[1]) - 1;
+                    taskList.markTask(markIndex);
+                    ui.showMarked(taskList.getTask(markIndex));
+                    break;
+
+                case "unmark":
+                    int unmarkIndex = Integer.parseInt(parts[1]) - 1;
+                    taskList.unmarkTask(unmarkIndex);
+                    ui.showUnmarked(taskList.getTask(unmarkIndex));
+                    break;
+
+                default:
+                    // Treat everything else as adding a new task
+                    taskList.addTask(input);
+                    ui.showAdded(input);
+                    break;
             }
         }
-
-        System.out.println(horizontalLine);
-        System.out.println(" Wallahi, I'm out here. Say less.");
-        System.out.println(horizontalLine);
+        ui.showGoodbye();
+        scanner.close();
     }
-
 }
