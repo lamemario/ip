@@ -60,7 +60,7 @@ public class Storage {
     }
 
     // This logic parses the "T | 1 | description" format back into objects
-    private Task parseTask(String line) {
+    private Task parseTask(String line) throws VaticanException {
         String[] parts = line.split(" \\| ");
         String type = parts[0];
         boolean isDone = parts[1].equals("1");
