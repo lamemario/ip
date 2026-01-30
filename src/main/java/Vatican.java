@@ -35,11 +35,14 @@ public class Vatican {
             CommandType command = CommandType.fromString(parts[0]);
 
             try {
-                switch (command) {
-                    case BYE:
-                        isExit = true;
-                        break;
+                if (input.trim().equalsIgnoreCase("bye")) {
+                    Command c = Parser.parse(input);
+                    c.execute(taskList, ui, storage);
+                    isExit = c.isExit();
+                    continue; // Skip the old switch logic
+                }
 
+                switch (command) {
                     case LIST:
                         ui.showTaskList(taskList);
                         break;
@@ -82,7 +85,6 @@ public class Vatican {
                 ui.showError(e.getMessage());
             }
         }
-        ui.showGoodbye();
         scanner.close();
     }
 
