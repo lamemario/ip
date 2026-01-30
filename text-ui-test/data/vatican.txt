@@ -1,5 +1,25 @@
 T | 0 | temporary blessing
+T | 0 | read scripture
+E | 0 | varsities | 2026-04-17 | 2026-04-18
+T | 0 | read scripture
+T | 0 | temporary blessing
 T | 0 | invalid /by Sunday
+T | 0 | read scripture
+D | 0 | homework | 2026-02-15
+E | 0 | varsities | 2026-04-17 | 2026-04-18
+T | 0 | read scripture
+T | 0 | temporary blessing
+T | 0 | invalid /by Sunday
+T | 0 | read scripture
+D | 0 | homework | 2026-02-15
+E | 0 | varsities | 2026-04-17 | 2026-04-18
+T | 0 | read scripture
+T | 0 | temporary blessing
+T | 0 | invalid /by Sunday
+T | 0 | read scripture
+D | 0 | homework | 2026-02-15
+E | 0 | varsities | 2026-04-17 | 2026-04-18
+T | 0 | read scripture
 T | 0 | temporary blessing
 T | 0 | invalid /by Sunday
 T | 0 | read scripture
