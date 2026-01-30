@@ -11,8 +11,18 @@ import vatican.task.Todo;
 import vatican.task.Deadline;
 import vatican.task.Event;
 
-
+/**
+ * Parses user input into executable commands.
+ * Identifies the command type and extracts necessary arguments.
+ */
 public class Parser {
+
+    /**
+     * Parses the full command string and returns the corresponding Command object.
+     * @param fullCommand The full line of input entered by the user.
+     * @return A specific Command object (e.g., AddCommand, DeleteCommand) ready for execution.
+     * @throws VaticanException If the command is invalid or contains missing/incorrect parameters.
+     */
     public static Command parse(String fullCommand) throws VaticanException {
         String[] parts = fullCommand.split(" ", 2);
         CommandType type = CommandType.fromString(parts[0]);
