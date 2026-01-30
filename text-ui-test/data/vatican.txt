@@ -1,4 +1,7 @@
-T | 0 | read scripture
-D | 1 | finish report | Monday
-E | 0 | gala dinner | 6pm | 9pm
+T | 0 | temporary blessing
 T | 0 | invalid /by Sunday
+T | 0 | temporary blessing
+T | 0 | invalid /by Sunday
+T | 0 | read scripture
+D | 0 | homework | 2026-02-15
+E | 0 | varsities | 2026-04-17 | 2026-04-18
