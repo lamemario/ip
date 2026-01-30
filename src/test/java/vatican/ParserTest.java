@@ -1,0 +1,22 @@
+package vatican;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import vatican.command.Command;
+import vatican.command.AddCommand;
+
+public class ParserTest {
+    @Test
+    public void parse_todo_correctCommandType() throws VaticanException {
+        Command c = Parser.parse("todo read scripture");
+        assertTrue(c instanceof vatican.command.AddCommand);
+    }
+
+    @Test
+    public void parse_invalidCommand_exceptionThrown() {
+        assertThrows(VaticanException.class, () -> {
+            Parser.parse("waste command");
+        });
+    }
+}
