@@ -6,6 +6,8 @@ public class Parser {
         switch (type) {
         case BYE:
             return new ExitCommand();
+        case LIST:
+            return new ListCommand();
         default:
             throw new VaticanException("I haven't learned that move in the new system yet, styll.");
         }
