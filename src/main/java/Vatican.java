@@ -43,10 +43,6 @@ public class Vatican {
                 }
 
                 switch (command) {
-                    case LIST:
-                        ui.showTaskList(taskList);
-                        break;
-
                     case MARK:
                         handleMark(parts, taskList, ui);
                         storage.save(taskList);
