@@ -1,11 +1,6 @@
 package vatican;
 
-import vatican.command.Command;
-import vatican.command.AddCommand;
-import vatican.command.DeleteCommand;
-import vatican.command.ExitCommand;
-import vatican.command.ListCommand;
-import vatican.command.MarkCommand;
+import vatican.command.*;
 
 import vatican.task.Todo;
 import vatican.task.Deadline;
@@ -43,6 +38,11 @@ public class Parser {
             }
             String[] timeParts = eParts[1].split(" /to ");
             return new AddCommand(new Event(eParts[0], timeParts[0], timeParts[1]));
+        case FIND:
+            if (parts.length < 2 || parts[1].trim().isEmpty()) {
+                throw new VaticanException("The description cannot be empty, styll.");
+            }
+            return new FindCommand(parts[1].trim());
         default:
             throw new VaticanException("I don't know what that means. Nize that.");
         }
