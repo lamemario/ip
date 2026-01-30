@@ -9,21 +9,33 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import vatican.VaticanException;
 import vatican.task.Deadline;
 import vatican.task.Event;
 import vatican.task.Task;
 import vatican.task.Todo;
-import vatican.VaticanException;
 
+/**
+ * Handles the loading and saving of task data to the hard disk.
+ * Ensures data persistence across application restarts by writing to a specific file path.
+ */
 public class Storage {
     private String filePath;
 
+    /**
+     * Creates a new Storage instance.
+     *
+     * @param filePath The file path where the data is stored.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
     /**
-     * Saves the current vatican.task list to the hard disk.
+     * Saves the current task list to the file specified in the constructor.
+     * Creates the parent directories if they do not exist.
+     *
+     * @param taskList The TaskList containing tasks to save.
      */
     public void save(TaskList taskList) {
         try {
@@ -44,7 +56,10 @@ public class Storage {
     }
 
     /**
-     * Loads tasks from the hard disk. Gracefully handles missing files.
+     * Loads tasks from the file. Returns an empty list if the file does not exist.
+     *
+     * @return An ArrayList of Task objects loaded from the file.
+     * @throws VaticanException If the file exists but cannot be read or parsed due to IO errors.
      */
     public ArrayList<Task> load() throws VaticanException {
         ArrayList<Task> loadedTasks = new ArrayList<>();

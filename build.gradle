@@ -35,6 +35,7 @@ shadowJar {
     archiveFileName = 'vatican.jar'
 }
 
-run{
+run {
     standardInput = System.in
+    enableAssertions = true
 }
