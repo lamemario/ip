@@ -8,6 +8,7 @@ public class Todo extends Task {
 
     /**
      * Creates a new Todo task with the specified description.
+     *
      * @param description The description of the task.
      */
     public Todo(String description) {
@@ -21,6 +22,7 @@ public class Todo extends Task {
 
     /**
      * Formats the Todo task for file storage.
+     *
      * @return A string formatted as "T | status | description".
      */
     @Override

@@ -16,8 +16,9 @@ public class Deadline extends Task {
     /**
      * Creates a new Deadline task.
      * Parses the date string into a LocalDate object.
+     *
      * @param description The description of the task.
-     * @param by The deadline date in "yyyy-mm-dd" format.
+     * @param by          The deadline date in "yyyy-mm-dd" format.
      * @throws VaticanException If the date format is invalid.
      */
     public Deadline(String description, String by) throws VaticanException {
@@ -37,6 +38,7 @@ public class Deadline extends Task {
 
     /**
      * Formats the Deadline task for file storage.
+     *
      * @return A string formatted as "D | status | description | by".
      */
     @Override

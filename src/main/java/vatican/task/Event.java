@@ -17,9 +17,10 @@ public class Event extends Task {
     /**
      * Creates a new Event task.
      * Parses the start and end date strings into LocalDate objects.
+     *
      * @param description The description of the event.
-     * @param from The start date in "yyyy-mm-dd" format.
-     * @param to The end date in "yyyy-mm-dd" format.
+     * @param from        The start date in "yyyy-mm-dd" format.
+     * @param to          The end date in "yyyy-mm-dd" format.
      * @throws VaticanException If the date format is invalid.
      */
     public Event(String description, String from, String to) throws VaticanException {
@@ -41,6 +42,7 @@ public class Event extends Task {
 
     /**
      * Formats the Event task for file storage.
+     *
      * @return A string formatted as "E | status | description | from | to".
      */
     @Override

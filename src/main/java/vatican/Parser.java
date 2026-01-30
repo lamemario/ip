@@ -1,15 +1,14 @@
 package vatican;
 
-import vatican.command.Command;
 import vatican.command.AddCommand;
+import vatican.command.Command;
 import vatican.command.DeleteCommand;
 import vatican.command.ExitCommand;
 import vatican.command.ListCommand;
 import vatican.command.MarkCommand;
-
-import vatican.task.Todo;
 import vatican.task.Deadline;
 import vatican.task.Event;
+import vatican.task.Todo;
 
 /**
  * Parses user input into executable commands.
@@ -19,6 +18,7 @@ public class Parser {
 
     /**
      * Parses the full command string and returns the corresponding Command object.
+     *
      * @param fullCommand The full line of input entered by the user.
      * @return A specific Command object (e.g., AddCommand, DeleteCommand) ready for execution.
      * @throws VaticanException If the command is invalid or contains missing/incorrect parameters.

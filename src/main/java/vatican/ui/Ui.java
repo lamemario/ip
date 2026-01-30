@@ -19,6 +19,7 @@ public class Ui {
 
     /**
      * Displays the welcome message and logo when the application starts.
+     *
      * @param logo The ASCII art logo of the application.
      */
     public void showWelcome(String logo) {
@@ -31,6 +32,7 @@ public class Ui {
 
     /**
      * Prints the entire list of tasks to the console.
+     *
      * @param tasks The TaskList object containing the tasks to display.
      */
     public void showTaskList(TaskList tasks) {
@@ -44,6 +46,7 @@ public class Ui {
 
     /**
      * Prints a confirmation message when a task is marked as done.
+     *
      * @param task The task that was marked.
      */
     public void showMarked(Task task) {
@@ -55,6 +58,7 @@ public class Ui {
 
     /**
      * Prints a confirmation message when a task is marked as not done.
+     *
      * @param task The task that was unmarked.
      */
     public void showUnmarked(Task task) {
@@ -66,7 +70,8 @@ public class Ui {
 
     /**
      * Prints a confirmation message when a new task is added.
-     * @param task The task that was added.
+     *
+     * @param task      The task that was added.
      * @param totalSize The new total number of tasks in the list.
      */
     public void showAdded(Task task, int totalSize) {
@@ -88,6 +93,7 @@ public class Ui {
 
     /**
      * Prints an error message to the console.
+     *
      * @param message The error message to display.
      */
     public void showError(String message) {
@@ -98,7 +104,8 @@ public class Ui {
 
     /**
      * Prints a confirmation message when a task is deleted.
-     * @param task The task that was removed.
+     *
+     * @param task       The task that was removed.
      * @param totalTasks The remaining number of tasks in the list.
      */
     public void showDeleted(Task task, int totalTasks) {

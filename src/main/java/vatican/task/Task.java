@@ -10,6 +10,7 @@ public class Task {
 
     /**
      * Creates a new Task with the specified description.
+     *
      * @param description The description of the task.
      */
     public Task(String description) {
@@ -19,6 +20,7 @@ public class Task {
 
     /**
      * Returns the status icon of the task.
+     *
      * @return "X" if the task is done, otherwise a space " ".
      */
     public String getStatusIcon() {
@@ -41,6 +43,7 @@ public class Task {
 
     /**
      * Formats the task for file storage.
+     *
      * @return A string representation of the task suitable for saving to disk (e.g., "1 | description").
      */
     public String toFileFormat() {

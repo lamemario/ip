@@ -1,4 +1,5 @@
 package vatican;
+
 import java.util.Scanner;
 
 import vatican.command.Command;
@@ -8,8 +9,8 @@ import vatican.ui.Ui;
 
 public class Vatican {
     private final Storage storage;
-    private TaskList taskList;
     private final Ui ui;
+    private TaskList taskList;
 
     public Vatican(String filePath) {
         ui = new Ui();
@@ -22,6 +23,9 @@ public class Vatican {
         }
     }
 
+    public static void main(String[] args) {
+        new Vatican("data/vatican.txt").run();
+    }
 
     public void run() {
         String logo = """
@@ -48,9 +52,5 @@ public class Vatican {
             }
         }
         scanner.close();
-    }
-
-    public static void main(String[] args) {
-        new Vatican("data/vatican.txt").run();
     }
 }

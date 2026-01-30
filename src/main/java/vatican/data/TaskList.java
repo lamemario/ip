@@ -20,6 +20,7 @@ public class TaskList {
 
     /**
      * Constructs a TaskList initialized with a given list of tasks.
+     *
      * @param loadedTasks The ArrayList of tasks loaded from storage.
      */
     public TaskList(ArrayList<Task> loadedTasks) {
@@ -28,6 +29,7 @@ public class TaskList {
 
     /**
      * Adds a task to the list.
+     *
      * @param task The task object to be added.
      */
     public void addTask(Task task) {
@@ -36,6 +38,7 @@ public class TaskList {
 
     /**
      * Deletes a task from the list at the specified index.
+     *
      * @param index The zero-based index of the task to remove.
      */
     public void deleteTask(int index) {
@@ -44,6 +47,7 @@ public class TaskList {
 
     /**
      * Marks the task at the specified index as done.
+     *
      * @param index The zero-based index of the task to mark.
      */
     public void markTask(int index) {
@@ -53,6 +57,7 @@ public class TaskList {
 
     /**
      * Marks the task at the specified index as not done.
+     *
      * @param index The zero-based index of the task to unmark.
      */
     public void unmarkTask(int index) {
@@ -62,6 +67,7 @@ public class TaskList {
 
     /**
      * Retrieves the task at the specified index.
+     *
      * @param index The zero-based index of the task.
      * @return The Task object at the specified index.
      */
@@ -71,6 +77,7 @@ public class TaskList {
 
     /**
      * Returns the total number of tasks in the list.
+     *
      * @return The number of tasks currently in the list.
      */
     public int getSize() {
