@@ -1,4 +1,10 @@
+package vatican;
 import java.util.Scanner;
+
+import vatican.command.Command;
+import vatican.data.Storage;
+import vatican.data.TaskList;
+import vatican.ui.Ui;
 
 public class Vatican {
     private final Storage storage;

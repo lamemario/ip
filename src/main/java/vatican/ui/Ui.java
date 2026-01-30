@@ -1,3 +1,8 @@
+package vatican.ui;
+
+import vatican.data.TaskList;
+import vatican.task.Task;
+
 public class Ui {
     private static final String LINE = "____________________________________________________________";
 
@@ -8,7 +13,7 @@ public class Ui {
     public void showWelcome(String logo) {
         showLine();
         System.out.println(logo);
-        System.out.println(" More life. It's Vatican, dun know.");
+        System.out.println(" More life. It's vatican.Vatican, dun know.");
         System.out.println(" So, what's the deal? I'm tryna see how I can bless you.");
         showLine();
     }
@@ -56,11 +61,12 @@ public class Ui {
         showLine();
     }
 
-    public void showDeleted(Task task, int remainingCount) {
-        showLine();
-        System.out.println(" Say less. I've removed this task:");
+    public void showDeleted(Task task, int totalTasks) {
+        System.out.println("____________________________________________________________");
+        // Change task.getClass().getName() to just "blessing" or "task"
+        System.out.println(" Say less. I've removed this blessing:");
         System.out.println("   " + task);
-        System.out.println(" Now you have " + remainingCount + " tasks in the list.");
-        showLine();
+        System.out.println(" Now you have " + totalTasks + " tasks in the list.");
+        System.out.println("____________________________________________________________");
     }
 }

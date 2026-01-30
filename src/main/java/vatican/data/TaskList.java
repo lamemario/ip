@@ -1,4 +1,8 @@
+package vatican.data;
+
 import java.util.ArrayList;
+
+import vatican.task.Task;
 
 public class TaskList {
     private ArrayList<Task> tasks;
