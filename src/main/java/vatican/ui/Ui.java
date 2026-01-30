@@ -2,6 +2,7 @@ package vatican.ui;
 
 import vatican.data.TaskList;
 import vatican.task.Task;
+import java.util.ArrayList;
 
 public class Ui {
     private static final String LINE = "____________________________________________________________";
@@ -15,6 +16,15 @@ public class Ui {
         System.out.println(logo);
         System.out.println(" More life. It's vatican.Vatican, dun know.");
         System.out.println(" So, what's the deal? I'm tryna see how I can bless you.");
+        showLine();
+    }
+
+    public void showFoundTasks(ArrayList<Task> foundTasks) {
+        showLine();
+        System.out.println(" Here are the matching tasks in your list, styll:");
+        for (int i = 0; i < foundTasks.size(); i++) {
+            System.out.println(" " + (i + 1) + "." + foundTasks.get(i));
+        }
         showLine();
     }
 
