@@ -12,6 +12,16 @@ list
 todo invalid /by Sunday
 deadline invalid /from now
 event missing parts
+todo read scripture
+deadline homework /by 2026-02-15
+event varsities /from 2026-04-17 /to 2026-04-18
+deadline broken /by Monday
+list
+mark 2
+unmark 2
+delete 1
+list
+bye
 mark 100
 delete 100
 list

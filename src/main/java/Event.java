@@ -1,17 +1,26 @@
-public class Event extends Task {
-    protected String from;
-    protected String to;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
-    public Event(String description, String from, String to) {
+public class Event extends Task {
+    protected LocalDate from;
+    protected LocalDate to;
+
+    public Event(String description, String from, String to) throws VaticanException {
         super(description);
-        this.from = from;
-        this.to = to;
+        try {
+            this.from = LocalDate.parse(from.trim());
+            this.to = LocalDate.parse(to.trim());
+        } catch (DateTimeParseException e) {
+            throw new VaticanException("Use yyyy-mm-dd for the timing, dun know.");
+        }
     }
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() +
-                " (from: " + from + " to: " + to + ")";
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("MMM dd yyyy");
+        return "[E]" + super.toString() + " (from: " + from.format(fmt) +
+                " to: " + to.format(fmt) + ")";
     }
 
     @Override
