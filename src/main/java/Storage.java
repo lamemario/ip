@@ -1,0 +1,86 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Storage {
+    private String filePath;
+
+    public Storage(String filePath) {
+        this.filePath = filePath;
+    }
+
+    /**
+     * Saves the current task list to the hard disk.
+     */
+    public void save(TaskList taskList) {
+        try {
+            // OS-independent way to handle paths and directories
+            Path path = Paths.get(filePath); //
+            if (path.getParent() != null) {
+                Files.createDirectories(path.getParent()); // Create ./data/ if missing
+            }
+
+            FileWriter writer = new FileWriter(filePath);
+            for (int i = 0; i < taskList.getSize(); i++) {
+                writer.write(taskList.getTask(i).toFileFormat() + System.lineSeparator());
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(" Two twos my word fam, I couldn't save the blessings: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Loads tasks from the hard disk. Gracefully handles missing files.
+     */
+    public ArrayList<Task> load() throws VaticanException {
+        ArrayList<Task> loadedTasks = new ArrayList<>();
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            return loadedTasks; // Return empty list for first-time run
+        }
+
+        try (Scanner s = new Scanner(file)) {
+            while (s.hasNext()) {
+                String line = s.nextLine();
+                if (!line.trim().isEmpty()) {
+                    loadedTasks.add(parseTask(line));
+                }
+            }
+        } catch (IOException e) {
+            throw new VaticanException("oh my gad fam, i cant read them wasteyute task list, tsk.");
+        }
+        return loadedTasks;
+    }
+
+    // This logic parses the "T | 1 | description" format back into objects
+    private Task parseTask(String line) {
+        String[] parts = line.split(" \\| ");
+        String type = parts[0];
+        boolean isDone = parts[1].equals("1");
+        Task task;
+
+        switch (type) {
+        case "T":
+            task = new Todo(parts[2]);
+            break;
+        case "D":
+            task = new Deadline(parts[2], parts[3]);
+            break;
+        case "E":
+            task = new Event(parts[2], parts[3], parts[4]);
+            break;
+        default:
+            return null;
+        }
+
+        if (isDone) task.markAsDone();
+        return task;
+    }
+}
