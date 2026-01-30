@@ -12,14 +12,22 @@ public class Vatican {
             """;
 
         Ui ui = new Ui();
-        TaskList taskList = new TaskList();
-        Scanner scanner = new Scanner(System.in);
+        Storage storage = new Storage("data/vatican.txt");
+        TaskList taskList;
 
+        try {
+            taskList = new TaskList(storage.load());
+        } catch (VaticanException e) {
+            ui.showError(e.getMessage());
+            taskList = new TaskList();
+        }
+
+        Scanner scanner = new Scanner(System.in);
         ui.showWelcome(logo);
 
         boolean isExit = false;
 
-        while (scanner.hasNextLine() && !isExit) {
+        while (!isExit) {
             String input = scanner.nextLine();
             String[] parts = input.split(" ", 2);
 
@@ -38,26 +46,32 @@ public class Vatican {
 
                     case MARK:
                         handleMark(parts, taskList, ui);
+                        storage.save(taskList);
                         break;
 
                     case UNMARK:
                         handleUnmark(parts, taskList, ui);
+                        storage.save(taskList);
                         break;
 
                     case TODO:
                         handleTodo(parts, taskList, ui);
+                        storage.save(taskList);
                         break;
 
                     case DEADLINE:
                         handleDeadline(parts, taskList, ui);
+                        storage.save(taskList);
                         break;
 
                     case EVENT:
                         handleEvent(parts, taskList, ui);
+                        storage.save(taskList);
                         break;
 
                     case DELETE:
                         handleDelete(parts, taskList, ui);
+                        storage.save(taskList);
                         break;
 
                     case UNKNOWN:

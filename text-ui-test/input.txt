@@ -1,34 +1,18 @@
 list
-todo read basics
-deadline submit assignment /by Tuesday
-event team meeting /from 2pm /to 4pm
-TODO check caps lock
-DeaDline mixed case /by Wednesday
-Event weird spacing      /from    5pm    /to    6pm
-todo
-todo
-deadline
-deadline return book
-deadline return book /by
-event
-event project launch
-event project launch /from Mon 9am
-mark
-mark one
-mark 0
-mark 100
-unmark
-unmark two
-unmark -5
-unmark 100
-delete
-delete 100
-delete 0
-delete abc
-blah
-gibberish command
+todo read scripture
+deadline finish report /by Monday
+event gala dinner /from 6pm /to 9pm
 mark 1
+mark 2
 unmark 1
-delete 1
+list
+todo temporary blessing
+delete 4
+list
+todo invalid /by Sunday
+deadline invalid /from now
+event missing parts
+mark 100
+delete 100
 list
 bye
