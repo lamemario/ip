@@ -1,3 +1,5 @@
+package vatican.data;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,6 +9,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import vatican.task.Deadline;
+import vatican.task.Event;
+import vatican.task.Task;
+import vatican.task.Todo;
+import vatican.VaticanException;
+
 public class Storage {
     private String filePath;
 
@@ -15,14 +23,14 @@ public class Storage {
     }
 
     /**
-     * Saves the current task list to the hard disk.
+     * Saves the current vatican.task list to the hard disk.
      */
     public void save(TaskList taskList) {
         try {
             // OS-independent way to handle paths and directories
             Path path = Paths.get(filePath); //
             if (path.getParent() != null) {
-                Files.createDirectories(path.getParent()); // Create ./data/ if missing
+                Files.createDirectories(path.getParent()); // Create ./vatican.data/ if missing
             }
 
             FileWriter writer = new FileWriter(filePath);
@@ -54,7 +62,7 @@ public class Storage {
                 }
             }
         } catch (IOException e) {
-            throw new VaticanException("oh my gad fam, i cant read them wasteyute task list, tsk.");
+            throw new VaticanException("oh my gad fam, i cant read them wasteyute vatican.task list, tsk.");
         }
         return loadedTasks;
     }

@@ -1,3 +1,17 @@
+package vatican;
+
+import vatican.command.Command;
+import vatican.command.AddCommand;
+import vatican.command.DeleteCommand;
+import vatican.command.ExitCommand;
+import vatican.command.ListCommand;
+import vatican.command.MarkCommand;
+
+import vatican.task.Todo;
+import vatican.task.Deadline;
+import vatican.task.Event;
+
+
 public class Parser {
     public static Command parse(String fullCommand) throws VaticanException {
         String[] parts = fullCommand.split(" ", 2);

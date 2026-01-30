@@ -1,3 +1,11 @@
+package vatican.command;
+
+import vatican.data.Storage;
+import vatican.data.TaskList;
+import vatican.task.Task;
+import vatican.ui.Ui;
+import vatican.VaticanException;
+
 public class AddCommand extends Command {
     private Task task;
 
