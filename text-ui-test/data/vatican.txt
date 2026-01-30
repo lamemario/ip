@@ -1,0 +1,4 @@
+T | 0 | read scripture
+D | 1 | finish report | Monday
+E | 0 | gala dinner | 6pm | 9pm
+T | 0 | invalid /by Sunday

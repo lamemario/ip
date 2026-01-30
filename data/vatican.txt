@@ -1,0 +1,4 @@
+T | 0 | read scripture
+D | 0 | finish report | Monday
+T | 0 | read book
+T | 0 | eat food
