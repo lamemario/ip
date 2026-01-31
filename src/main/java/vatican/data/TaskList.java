@@ -6,7 +6,7 @@ import vatican.task.Task;
 
 /**
  * Represents the list of tasks.
- * Provides operations to add, delete, mark, unmark, and retrieve tasks.
+ * Provides operations to add, delete, mark, unmark, find, and retrieve tasks.
  */
 public class TaskList {
     private ArrayList<Task> tasks;
@@ -20,7 +20,6 @@ public class TaskList {
 
     /**
      * Constructs a TaskList initialized with a given list of tasks.
-     *
      * @param loadedTasks The ArrayList of tasks loaded from storage.
      */
     public TaskList(ArrayList<Task> loadedTasks) {
@@ -29,7 +28,6 @@ public class TaskList {
 
     /**
      * Adds a task to the list.
-     *
      * @param task The task object to be added.
      */
     public void addTask(Task task) {
@@ -38,7 +36,6 @@ public class TaskList {
 
     /**
      * Deletes a task from the list at the specified index.
-     *
      * @param index The zero-based index of the task to remove.
      */
     public void deleteTask(int index) {
@@ -47,7 +44,6 @@ public class TaskList {
 
     /**
      * Marks the task at the specified index as done.
-     *
      * @param index The zero-based index of the task to mark.
      */
     public void markTask(int index) {
@@ -57,7 +53,6 @@ public class TaskList {
 
     /**
      * Marks the task at the specified index as not done.
-     *
      * @param index The zero-based index of the task to unmark.
      */
     public void unmarkTask(int index) {
@@ -67,7 +62,6 @@ public class TaskList {
 
     /**
      * Retrieves the task at the specified index.
-     *
      * @param index The zero-based index of the task.
      * @return The Task object at the specified index.
      */
@@ -76,8 +70,22 @@ public class TaskList {
     }
 
     /**
+     * Finds tasks that contain the keyword in their description.
+     * @param keyword The string to search for.
+     * @return An ArrayList of matching tasks.
+     */
+    public ArrayList<Task> find(String keyword) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
+        for (Task t : this.tasks) {
+            if (t.getDescription().contains(keyword)) {
+                matchingTasks.add(t);
+            }
+        }
+        return matchingTasks;
+    }
+
+    /**
      * Returns the total number of tasks in the list.
-     *
      * @return The number of tasks currently in the list.
      */
     public int getSize() {

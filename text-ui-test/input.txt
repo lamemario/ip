@@ -1,28 +1,17 @@
 list
 todo read scripture
-deadline finish report /by Monday
-event gala dinner /from 6pm /to 9pm
+deadline finish report /by 2026-02-02
+event gala dinner /from 2026-02-02 /to 2026-02-02
 mark 1
 mark 2
 unmark 1
 list
 todo temporary blessing
-delete 4
+delete 3
 list
-todo invalid /by Sunday
-deadline invalid /from now
-event missing parts
-todo read scripture
-deadline homework /by 2026-02-15
-event varsities /from 2026-04-17 /to 2026-04-18
-deadline broken /by Monday
-list
-mark 2
-unmark 2
-delete 1
-list
-bye
-mark 100
-delete 100
-list
+find report
+find scripture
+find nothing
+todo
+blah
 bye

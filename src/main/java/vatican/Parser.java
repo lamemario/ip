@@ -1,14 +1,16 @@
 package vatican;
 
-import vatican.command.AddCommand;
 import vatican.command.Command;
+import vatican.command.AddCommand;
 import vatican.command.DeleteCommand;
 import vatican.command.ExitCommand;
 import vatican.command.ListCommand;
 import vatican.command.MarkCommand;
+import vatican.command.FindCommand;
+
+import vatican.task.Todo;
 import vatican.task.Deadline;
 import vatican.task.Event;
-import vatican.task.Todo;
 
 /**
  * Parses user input into executable commands.
@@ -18,7 +20,6 @@ public class Parser {
 
     /**
      * Parses the full command string and returns the corresponding Command object.
-     *
      * @param fullCommand The full line of input entered by the user.
      * @return A specific Command object (e.g., AddCommand, DeleteCommand) ready for execution.
      * @throws VaticanException If the command is invalid or contains missing/incorrect parameters.
@@ -37,13 +38,20 @@ public class Parser {
             return new MarkCommand(parseIndex(parts), type == CommandType.MARK);
         case DELETE:
             return new DeleteCommand(parseIndex(parts));
+        case FIND:
+            if (parts.length < 2 || parts[1].trim().isEmpty()) {
+                throw new VaticanException("The description cannot be empty, styll.");
+            }
+            return new FindCommand(parts[1].trim());
         case TODO:
             validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");
             return new AddCommand(new Todo(parts[1]));
         case DEADLINE:
             validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");
             String[] dParts = parts[1].split(" /by ");
-            if (dParts.length < 2) throw new VaticanException("mans need a date! You forgot '/by', are you dumb?");
+            if (dParts.length < 2) {
+                throw new VaticanException("mans need a date! You forgot '/by', are you dumb?");
+            }
             return new AddCommand(new Deadline(dParts[0], dParts[1]));
         case EVENT:
             validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");

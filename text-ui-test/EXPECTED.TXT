@@ -14,120 +14,69 @@ ____________________________________________________________
 ____________________________________________________________
 ____________________________________________________________
  Got it. I've added this blessing, styll:
-   [T][ ] read basics
+   [T][ ] read scripture
  Now you have 1 tasks in the list. Dun know.
 ____________________________________________________________
 ____________________________________________________________
  Got it. I've added this blessing, styll:
-   [D][ ] submit assignment (by: Tuesday)
+   [D][ ] finish report (by: Feb 02 2026)
  Now you have 2 tasks in the list. Dun know.
 ____________________________________________________________
 ____________________________________________________________
  Got it. I've added this blessing, styll:
-   [E][ ] team meeting (from: 2pm to: 4pm)
+   [E][ ] gala dinner (from: Feb 02 2026 to: Feb 02 2026)
  Now you have 3 tasks in the list. Dun know.
 ____________________________________________________________
 ____________________________________________________________
- Got it. I've added this blessing, styll:
-   [T][ ] check caps lock
- Now you have 4 tasks in the list. Dun know.
-____________________________________________________________
-____________________________________________________________
- Got it. I've added this blessing, styll:
-   [D][ ] mixed case (by: Wednesday)
- Now you have 5 tasks in the list. Dun know.
-____________________________________________________________
-____________________________________________________________
- Got it. I've added this blessing, styll:
-   [E][ ] weird spacing      (from:    5pm    to:    6pm)
- Now you have 6 tasks in the list. Dun know.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, you're moving loose. The description cannot be empty, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, you're moving loose. The description cannot be empty, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, you're moving loose. The description cannot be empty, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, mans need a date! You forgot '/by', are you dumb?
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, mans need a date! You forgot '/by', are you dumb?
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, you're moving loose. The description cannot be empty, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, you need a start AND end time (/from & /to).
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, you need a start AND end time (/from & /to).
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, Who am I marking? You forgot the number, fam.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, Who am I unmarking? Don't cheese me, give me a number.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, you tryna delete what? You forgot the number, fam.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, That number is a wasteyute. It doesn't exist, styll.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, I don't know what that means. Nize that.
-____________________________________________________________
-____________________________________________________________
- Two twos my word fam, I don't know what that means. Nize that.
+ Big moves. I've marked this as done, styll:
+   [T][X] read scripture
 ____________________________________________________________
 ____________________________________________________________
  Big moves. I've marked this as done, styll:
-   [T][X] read basics
+   [D][X] finish report (by: Feb 02 2026)
 ____________________________________________________________
 ____________________________________________________________
  High key, I've marked this as not done yet:
-   [T][ ] read basics
-____________________________________________________________
-____________________________________________________________
- Say less. I've removed this vatican.task:
-   [T][ ] read basics
- Now you have 5 tasks in the list.
+   [T][ ] read scripture
 ____________________________________________________________
 ____________________________________________________________
  Check the list out, styll:
- 1.[D][ ] submit assignment (by: Tuesday)
- 2.[E][ ] team meeting (from: 2pm to: 4pm)
- 3.[T][ ] check caps lock
- 4.[D][ ] mixed case (by: Wednesday)
- 5.[E][ ] weird spacing      (from:    5pm    to:    6pm)
+ 1.[T][ ] read scripture
+ 2.[D][X] finish report (by: Feb 02 2026)
+ 3.[E][ ] gala dinner (from: Feb 02 2026 to: Feb 02 2026)
+____________________________________________________________
+____________________________________________________________
+ Got it. I've added this blessing, styll:
+   [T][ ] temporary blessing
+ Now you have 4 tasks in the list. Dun know.
+____________________________________________________________
+____________________________________________________________
+ Say less. I've removed this blessing:
+   [E][ ] gala dinner (from: Feb 02 2026 to: Feb 02 2026)
+ Now you have 3 tasks in the list.
+____________________________________________________________
+____________________________________________________________
+ Check the list out, styll:
+ 1.[T][ ] read scripture
+ 2.[D][X] finish report (by: Feb 02 2026)
+ 3.[T][ ] temporary blessing
+____________________________________________________________
+____________________________________________________________
+ Here are the matching tasks in your list, styll:
+ 1.[D][X] finish report (by: Feb 02 2026)
+____________________________________________________________
+____________________________________________________________
+ Here are the matching tasks in your list, styll:
+ 1.[T][ ] read scripture
+____________________________________________________________
+____________________________________________________________
+ Here are the matching tasks in your list, styll:
+____________________________________________________________
+____________________________________________________________
+ Two twos my word fam, you're moving loose. The description cannot be empty, styll.
+____________________________________________________________
+____________________________________________________________
+ Two twos my word fam, I don't know what that means. Nize that.
 ____________________________________________________________
 ____________________________________________________________
  Wallahi, I'm out here. Say less.
