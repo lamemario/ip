@@ -103,7 +103,9 @@ public class Storage {
             return null;
         }
 
-        if (isDone) task.markAsDone();
+        if (isDone) {
+            task.markAsDone();
+        }
         return task;
     }
 }
