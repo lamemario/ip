@@ -1,6 +1,7 @@
 package vatican.ui;
 
 import java.util.ArrayList;
+
 import vatican.data.TaskList;
 import vatican.task.Task;
 

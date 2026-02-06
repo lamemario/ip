@@ -1,16 +1,15 @@
 package vatican;
 
-import vatican.command.Command;
 import vatican.command.AddCommand;
+import vatican.command.Command;
 import vatican.command.DeleteCommand;
 import vatican.command.ExitCommand;
+import vatican.command.FindCommand;
 import vatican.command.ListCommand;
 import vatican.command.MarkCommand;
-import vatican.command.FindCommand;
-
-import vatican.task.Todo;
 import vatican.task.Deadline;
 import vatican.task.Event;
+import vatican.task.Todo;
 
 /**
  * Parses user input into executable commands.
