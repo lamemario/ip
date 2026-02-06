@@ -1,3 +1,0 @@
-T | 1 | invalid /by Sunday
-T | 0 | temporary blessing
-T | 0 | temporary blessing

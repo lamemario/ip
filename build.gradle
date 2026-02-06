@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'checkstyle'
 }
 
 repositories {
@@ -33,6 +34,10 @@ application {
 
 shadowJar {
     archiveFileName = 'vatican.jar'
+}
+
+checkstyle {
+    toolVersion = '11.1.0'
 }
 
 run {
