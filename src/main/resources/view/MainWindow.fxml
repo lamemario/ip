@@ -13,6 +13,7 @@
             fx:controller="vatican.gui.MainWindow">
     <children>
         <TextField fx:id="userInput"
+                   promptText="Tell Vatican what's good..."
                    layoutY="558.0"
                    onAction="#handleUserInput"
                    prefHeight="41.0"
