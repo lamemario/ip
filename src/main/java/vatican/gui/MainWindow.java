@@ -34,6 +34,8 @@ public class MainWindow extends AnchorPane {
 
     public void setVatican(Vatican v) {
         vatican = v;
+        dialogContainer.getChildren().add(DialogBox.getDukeDialog("More life. It's Vatican, dun know.\n"
+                + "So, what's the deal? I'm tryna see how I can bless you.", vaticanImage));
     }
 
     @FXML

@@ -1,0 +1,30 @@
+/* src/main/resources/view/main.css */
+.root {
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-background-color: #ECE5DD; /* WhatsApp-like background */
+}
+
+.button {
+    -fx-background-color: #075E54;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #128C7E;
+}
+
+.text-field {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+/* Chat Bubbles */
+.label {
+    -fx-font-size: 14px;
+    -fx-padding: 10 15 10 15;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-background-color: white; /* Default background */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 3, 0, 1, 1);
+}

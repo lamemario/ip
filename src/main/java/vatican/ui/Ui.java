@@ -16,7 +16,7 @@ public class Ui {
      * Prints a horizontal divider line to the console.
      */
     public void showLine() {
-        System.out.println(LINE);
+        // System.out.println(LINE);
     }
 
     /**
