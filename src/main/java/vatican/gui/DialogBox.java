@@ -44,6 +44,15 @@ public class DialogBox extends HBox {
     }
 
     /**
+     * Applies the User style (Green).
+     */
+    public static DialogBox getUserDialog(String text, Image img) {
+        var db = new DialogBox(text, img);
+        db.dialog.getStyleClass().add("user-label"); // CSS class
+        return db;
+    }
+
+    /**
      * Flips the dialog box such that the ImageView is on the left and text on the right.
      */
     private void flip() {
@@ -51,16 +60,20 @@ public class DialogBox extends HBox {
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
         setAlignment(Pos.TOP_LEFT);
-        dialog.setStyle("-fx-background-color: #DCF8C6;");
     }
 
-    public static DialogBox getUserDialog(String text, Image img) {
-        return new DialogBox(text, img);
-    }
-
-    public static DialogBox getDukeDialog(String text, Image img) {
+    /**
+     * Applies the Vatican style (White) OR Error style (Red).
+     */
+    public static DialogBox getVaticanDialog(String text, Image img, boolean isError) {
         var db = new DialogBox(text, img);
         db.flip();
+
+        if (isError) {
+            db.dialog.getStyleClass().add("error-label"); // CSS class
+        } else {
+            db.dialog.getStyleClass().add("vatican-label"); // CSS class
+        }
         return db;
     }
 }
