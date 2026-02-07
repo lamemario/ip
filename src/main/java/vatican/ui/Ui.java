@@ -13,6 +13,18 @@ public class Ui {
     private static final String LINE = "____________________________________________________________";
 
     /**
+     * Prints a varargs list of messages to the console.
+     * This eliminates the need for repetitive System.out.println calls.
+     *
+     * @param messages The strings to be printed, one per line.
+     */
+    public void showToUser(String... messages) {
+        for (String message : messages) {
+            System.out.println(message);
+        }
+    }
+
+    /**
      * Prints a horizontal divider line to the console.
      */
     public void showLine() {
@@ -25,9 +37,11 @@ public class Ui {
      */
     public void showWelcome(String logo) {
         showLine();
-        System.out.println(logo);
-        System.out.println(" More life. It's vatican.Vatican, dun know.");
-        System.out.println(" So, what's the deal? I'm tryna see how I can bless you.");
+        showToUser(
+                logo,
+                " More life. It's vatican.Vatican, dun know.",
+                " So, what's the deal? I'm tryna see how I can bless you."
+        );
         showLine();
     }
 
@@ -37,9 +51,9 @@ public class Ui {
      */
     public void showTaskList(TaskList tasks) {
         showLine();
-        System.out.println(" Check the list out, styll:");
+        showToUser(" Check the list out, styll:");
         for (int i = 0; i < tasks.getSize(); i++) {
-            System.out.println(" " + (i + 1) + "." + tasks.getTask(i));
+            showToUser(" " + (i + 1) + "." + tasks.getTask(i));
         }
         showLine();
     }
@@ -50,9 +64,9 @@ public class Ui {
      */
     public void showFoundTasks(ArrayList<Task> foundTasks) {
         showLine();
-        System.out.println(" Here are the matching tasks in your list, styll:");
+        showToUser(" Here are the matching tasks in your list, styll:");
         for (int i = 0; i < foundTasks.size(); i++) {
-            System.out.println(" " + (i + 1) + "." + foundTasks.get(i));
+            showToUser(" " + (i + 1) + "." + foundTasks.get(i));
         }
         showLine();
     }
@@ -63,8 +77,10 @@ public class Ui {
      */
     public void showMarked(Task task) {
         showLine();
-        System.out.println(" Big moves. I've marked this as done, styll:");
-        System.out.println("   " + task);
+        showToUser(
+                " Big moves. I've marked this as done, styll:",
+                "   " + task
+        );
         showLine();
     }
 
@@ -74,8 +90,10 @@ public class Ui {
      */
     public void showUnmarked(Task task) {
         showLine();
-        System.out.println(" High key, I've marked this as not done yet:");
-        System.out.println("   " + task);
+        showToUser(
+                " High key, I've marked this as not done yet:",
+                "   " + task
+        );
         showLine();
     }
 
@@ -86,9 +104,11 @@ public class Ui {
      */
     public void showAdded(Task task, int totalSize) {
         showLine();
-        System.out.println(" Got it. I've added this blessing, styll:");
-        System.out.println("   " + task);
-        System.out.println(" Now you have " + totalSize + " tasks in the list. Dun know.");
+        showToUser(
+                " Got it. I've added this blessing, styll:",
+                "   " + task,
+                " Now you have " + totalSize + " tasks in the list. Dun know."
+        );
         showLine();
     }
 
@@ -97,7 +117,7 @@ public class Ui {
      */
     public void showGoodbye() {
         showLine();
-        System.out.println(" Wallahi, I'm out here. Say less.");
+        showToUser(" Wallahi, I'm out here. Say less.");
         showLine();
     }
 
@@ -107,7 +127,7 @@ public class Ui {
      */
     public void showError(String message) {
         showLine();
-        System.out.println(" Two twos my word fam, " + message);
+        showToUser("Two twos my word fam, " + message);
         showLine();
     }
 
@@ -117,8 +137,10 @@ public class Ui {
      * @param totalTasks The remaining number of tasks in the list.
      */
     public void showDeleted(Task task, int totalTasks) {
-        System.out.println(" Say less. I've removed this blessing:");
-        System.out.println("   " + task);
-        System.out.println(" Now you have " + totalTasks + " tasks in the list.");
+        showToUser(
+                " Say less. I've removed this blessing:",
+                "   " + task,
+                " Now you have " + totalTasks + " tasks in the list."
+        );
     }
 }

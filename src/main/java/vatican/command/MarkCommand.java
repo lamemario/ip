@@ -39,7 +39,7 @@ public class MarkCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) throws VaticanException {
         // Guard against invalid indices
         if (index < 0 || index >= tasks.getSize()) {
-            throw new VaticanException("That blessing doesn't exist, fam. Check the numbers, styll.");
+            throw new VaticanException("that blessing doesn't exist. Check the numbers, styll.");
         }
 
         if (isMark) {
