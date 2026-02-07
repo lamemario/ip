@@ -7,8 +7,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import vatican.Parser;
 import vatican.Vatican;
-
+import vatican.VaticanException;
+import vatican.command.AddCommand;
+import vatican.command.Command;
+import vatican.command.DeleteCommand;
+import vatican.command.ExitCommand;
+import vatican.command.MarkCommand;
 /**
  * Controller for the main GUI.
  */
@@ -34,10 +40,12 @@ public class MainWindow extends AnchorPane {
 
     public void setVatican(Vatican v) {
         vatican = v;
-        // Check "false" for isError
         dialogContainer.getChildren().add(
-                DialogBox.getVaticanDialog(" More life. It's Vatican, dun know.\n"
-                        + " So, what's the deal? I'm tryna see how I can bless you.", vaticanImage, false)
+                DialogBox.getVaticanDialog(
+                        "More life. It's Vatican, dun know.\nSo, what's the deal? I'm tryna see how I can bless you.",
+                        vaticanImage,
+                        false
+                )
         );
     }
 
@@ -45,35 +53,61 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
 
-        // 1. If the input is just whitespace or empty
+        // 1. Wasteyute Check (Empty Input)
         if (input.trim().isEmpty()) {
             dialogContainer.getChildren().add(
                     DialogBox.getVaticanDialog(
-                            "Two twos my word fam, you're saying nothing. Don't be a wasteyute, man. "
-                                    + "I'm tryna bless you here. Speak up, fam",
+                            "Fam, you're saying nothing. Don't be a wasteyute.",
                             vaticanImage,
-                            true // Set isError to true so it shows in RED
+                            true // Force Error style
                     )
             );
             userInput.clear();
-            return; // Stop here, don't send empty text to the logic
+            return;
         }
 
-        // 2. Standard Logic
+        // 2. Execute Logic (Get text response)
         String response = vatican.getResponse(input);
 
-        // Detect if the response is an error (check for your specific error prefixes)
-        boolean isError = response.toLowerCase().startsWith("two twos")
-                || response.toLowerCase().startsWith("error")
-                || response.toLowerCase().startsWith("fam"); // Added "fam" just in case
+        // 3. Determine Style (Type-Safe!)
+        String commandType = "Normal";
+        boolean isError = false;
 
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getVaticanDialog(response, vaticanImage, isError)
+        try {
+            Command c = Parser.parse(input); // Check the command type
+
+            if (c instanceof AddCommand) {
+                commandType = "Add"; // Blue
+            } else if (c instanceof DeleteCommand) {
+                commandType = "Delete"; // Orange
+            } else if (c instanceof MarkCommand) {
+                commandType = "Mark"; // Green
+            } else if (c instanceof ExitCommand) {
+                commandType = "Delete"; // Orange (Exit shares Delete style)
+            }
+            // ListCommand and FindCommand default to "Normal" (White)
+
+        } catch (VaticanException e) {
+            isError = true;
+            commandType = "Error"; // Red
+        }
+
+        // 4. Update GUI
+        dialogContainer.getChildren().add(
+                DialogBox.getUserDialog(input, userImage)
         );
+
+        DialogBox vaticanBox = DialogBox.getVaticanDialog(response, vaticanImage, isError);
+
+        // Apply specific style if it's not a generic error/normal message
+        if (!isError && !commandType.equals("Normal")) {
+            vaticanBox.changeDialogStyle(commandType);
+        }
+
+        dialogContainer.getChildren().add(vaticanBox);
         userInput.clear();
 
-        // 3. Exit Logic
+        // 5. Exit Logic
         if (input.trim().equalsIgnoreCase("bye")) {
             javafx.animation.PauseTransition delay = new javafx.animation
                     .PauseTransition(javafx.util.Duration.seconds(1.5));

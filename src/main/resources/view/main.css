@@ -46,3 +46,26 @@
 .button:hover {
     -fx-background-color: #128C7E;
 }
+
+/* --- Command Styles --- */
+
+/* Add = Calm Blue */
+.add-label {
+    -fx-background-color: #d1eaed;
+    -fx-text-fill: #104e57;
+    -fx-border-color: #a8dadd;
+}
+
+/* Mark = Success Green */
+.marked-label {
+    -fx-background-color: #c3e6cb;
+    -fx-text-fill: #155724;
+    -fx-border-color: #8fd19e;
+}
+
+/* Delete = Warning Orange */
+.delete-label {
+    -fx-background-color: #ffeeba;
+    -fx-text-fill: #856404;
+    -fx-border-color: #ffeeba;
+}

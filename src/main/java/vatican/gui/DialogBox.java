@@ -76,4 +76,26 @@ public class DialogBox extends HBox {
         }
         return db;
     }
+
+    /**
+     * Applies the specific style based on the command type.
+     * @param commandType The type of command (Add, Mark, Delete, etc.)
+     */
+    public void changeDialogStyle(String commandType) {
+        switch (commandType) {
+        case "Add":
+            dialog.getStyleClass().add("add-label");
+            break;
+        case "Mark":
+            dialog.getStyleClass().add("marked-label");
+            break;
+        case "Delete":
+            dialog.getStyleClass().add("delete-label");
+            break; // "Error" and "Normal" are handled by the constructor logic
+        default:
+            // Do nothing if no specific style is found
+            break;
+        }
+    }
+
 }

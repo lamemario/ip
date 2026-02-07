@@ -117,10 +117,8 @@ public class Ui {
      * @param totalTasks The remaining number of tasks in the list.
      */
     public void showDeleted(Task task, int totalTasks) {
-        System.out.println("____________________________________________________________");
         System.out.println(" Say less. I've removed this blessing:");
         System.out.println("   " + task);
         System.out.println(" Now you have " + totalTasks + " tasks in the list.");
-        System.out.println("____________________________________________________________");
     }
 }
