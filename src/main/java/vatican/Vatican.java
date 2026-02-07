@@ -52,7 +52,7 @@ public class Vatican {
             System.setOut(originalOut);
             return outContent.toString();
         } catch (VaticanException e) {
-            return "Error: " + e.getMessage();
+            return "Two twos my word fam, " + e.getMessage();
         }
     }
 

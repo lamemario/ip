@@ -57,7 +57,7 @@ public class MainWindow extends AnchorPane {
         if (input.trim().isEmpty()) {
             dialogContainer.getChildren().add(
                     DialogBox.getVaticanDialog(
-                            "Fam, you're saying nothing. Don't be a wasteyute.",
+                            "you're saying nothing. Don't be a wasteyute.",
                             vaticanImage,
                             true // Force Error style
                     )

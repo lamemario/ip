@@ -35,7 +35,7 @@ public class DeleteCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) throws VaticanException {
         // Guard against invalid indices just like MarkCommand
         if (index < 0 || index >= tasks.getSize()) {
-            throw new VaticanException("Can't delete what isn't there, styll. Check the numbers.");
+            throw new VaticanException("I can't delete what isn't there. Check the numbers, styll.");
         }
 
         Task removedTask = tasks.getTask(index);

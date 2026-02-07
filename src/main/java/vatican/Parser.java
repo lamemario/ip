@@ -39,7 +39,7 @@ public class Parser {
             return new DeleteCommand(parseIndex(parts));
         case FIND:
             if (parts.length < 2 || parts[1].trim().isEmpty()) {
-                throw new VaticanException("The description cannot be empty, styll.");
+                throw new VaticanException("the description cannot be empty, styll.");
             }
             return new FindCommand(parts[1].trim());
         case TODO:
@@ -73,12 +73,12 @@ public class Parser {
 
     private static int parseIndex(String[] parts) throws VaticanException {
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
-            throw new VaticanException("You forgot the number, fam.");
+            throw new VaticanException("you forgot the number.");
         }
         try {
             return Integer.parseInt(parts[1]) - 1;
         } catch (NumberFormatException e) {
-            throw new VaticanException("That number is a wasteyute. Give me a digit, styll.");
+            throw new VaticanException("that number is a wasteyute. Give me a digit, styll.");
         }
     }
 }
