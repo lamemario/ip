@@ -3,7 +3,6 @@
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![JavaFX](https://img.shields.io/badge/GUI-JavaFX-blue)
 ![Build](https://img.shields.io/badge/Build-Gradle-green)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 **Vatican** is a desktop task management application optimised for use via a Command Line Interface (CLI) but wrapped in a modern, reactive **JavaFX GUI**.
 
