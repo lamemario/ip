@@ -38,6 +38,25 @@ public class Vatican {
     }
 
     /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        try {
+            java.io.ByteArrayOutputStream outContent = new java.io.ByteArrayOutputStream();
+            java.io.PrintStream originalOut = System.out;
+            System.setOut(new java.io.PrintStream(outContent));
+
+            vatican.command.Command c = Parser.parse(input);
+            c.execute(taskList, ui, storage);
+
+            System.setOut(originalOut);
+            return outContent.toString();
+        } catch (VaticanException e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    /**
      * Starts the application and runs the main Vatican chatbot.
      *
      * @param args Command line arguments (unused).
