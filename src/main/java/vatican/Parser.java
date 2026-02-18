@@ -24,6 +24,9 @@ public class Parser {
      * @throws VaticanException If the command is invalid or contains missing/incorrect parameters.
      */
     public static Command parse(String fullCommand) throws VaticanException {
+        // ASSERTION: The UI should never pass a null string to the parser
+        assert fullCommand != null : "Command string cannot be null";
+
         String[] parts = fullCommand.split(" ", 2);
         CommandType type = CommandType.fromString(parts[0]);
 
