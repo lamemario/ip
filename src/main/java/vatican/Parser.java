@@ -38,31 +38,47 @@ public class Parser {
         case DELETE:
             return new DeleteCommand(parseIndex(parts));
         case FIND:
-            if (parts.length < 2 || parts[1].trim().isEmpty()) {
-                throw new VaticanException("the description cannot be empty, styll.");
-            }
-            return new FindCommand(parts[1].trim());
+            return prepareFind(parts);
         case TODO:
-            validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");
-            return new AddCommand(new Todo(parts[1]));
+            return prepareTodo(parts);
         case DEADLINE:
-            validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");
-            String[] dParts = parts[1].split(" /by ");
-            if (dParts.length < 2) {
-                throw new VaticanException("mans need a date! You forgot '/by', are you dumb?");
-            }
-            return new AddCommand(new Deadline(dParts[0], dParts[1]));
+            return prepareDeadline(parts);
         case EVENT:
-            validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");
-            String[] eParts = parts[1].split(" /from ");
-            if (eParts.length < 2 || !eParts[1].contains(" /to ")) {
-                throw new VaticanException("you need a start AND end time (/from & /to).");
-            }
-            String[] timeParts = eParts[1].split(" /to ");
-            return new AddCommand(new Event(eParts[0], timeParts[0], timeParts[1]));
+            return prepareEvent(parts);
         default:
             throw new VaticanException("I don't know what that means. Nize that.");
         }
+    }
+
+    private static Command prepareFind(String[] parts) throws VaticanException {
+        if (parts.length < 2 || parts[1].trim().isEmpty()) {
+            throw new VaticanException("the description cannot be empty, styll.");
+        }
+        return new FindCommand(parts[1].trim());
+    }
+
+    private static Command prepareTodo(String[] parts) throws VaticanException {
+        validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");
+        return new AddCommand(new Todo(parts[1]));
+    }
+
+    private static Command prepareDeadline(String[] parts) throws VaticanException {
+        validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");
+        String[] dParts = parts[1].split(" /by ");
+        if (dParts.length < 2) {
+            throw new VaticanException("mans need a date! You forgot '/by', are you dumb?");
+        }
+        return new AddCommand(new Deadline(dParts[0], dParts[1]));
+    }
+
+    private static Command prepareEvent(String[] parts) throws VaticanException {
+        validateDescription(parts, "you're moving loose. The description cannot be empty, styll.");
+        String[] eParts = parts[1].split(" /from ");
+        if (eParts.length < 2 || !eParts[1].contains(" /to ")) {
+            throw new VaticanException("you need a start AND end time (/from & /to).");
+        }
+        String[] timeParts = eParts[1].split(" /to ");
+        return new AddCommand(new Event(eParts[0], timeParts[0], timeParts[1]));
     }
 
     private static void validateDescription(String[] parts, String message) throws VaticanException {
