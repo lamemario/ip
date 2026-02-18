@@ -20,7 +20,7 @@ import vatican.task.Todo;
  * Ensures data persistence across application restarts by writing to a specific file path.
  */
 public class Storage {
-    private String filePath;
+    private final String filePath;
 
     /**
      * Creates a new Storage instance.
@@ -28,6 +28,8 @@ public class Storage {
      * @param filePath The file path where the data is stored.
      */
     public Storage(String filePath) {
+        // ASSERTION: Ensure file path is valid
+        assert filePath != null && !filePath.isEmpty() : "File path cannot be null or empty";
         this.filePath = filePath;
     }
 
@@ -36,13 +38,16 @@ public class Storage {
      * Creates the parent directories if they do not exist.
      *
      * @param taskList The TaskList containing tasks to save.
+     * @throws VaticanException If the file cannot be written to.
      */
-    public void save(TaskList taskList) {
+    public void save(TaskList taskList) throws VaticanException {
+        // ASSERTION: Never try to save a null list
+        assert taskList != null : "Cannot save a null TaskList";
+
         try {
-            // OS-independent way to handle paths and directories
-            Path path = Paths.get(filePath); //
+            Path path = Paths.get(filePath);
             if (path.getParent() != null) {
-                Files.createDirectories(path.getParent()); // Create ./vatican.data/ if missing
+                Files.createDirectories(path.getParent());
             }
 
             FileWriter writer = new FileWriter(filePath);
@@ -51,7 +56,8 @@ public class Storage {
             }
             writer.close();
         } catch (IOException e) {
-            System.out.println(" Two twos my word fam, I couldn't save the blessings: " + e.getMessage());
+            // Throw exception so UI handles the error message, keeping Storage logic clean
+            throw new VaticanException("Two twos my word fam, I couldn't save the blessings: " + e.getMessage());
         }
     }
 
@@ -73,7 +79,15 @@ public class Storage {
             while (s.hasNext()) {
                 String line = s.nextLine();
                 if (!line.trim().isEmpty()) {
-                    loadedTasks.add(parseTask(line));
+                    try {
+                        Task t = parseTask(line);
+                        if (t != null) {
+                            loadedTasks.add(t);
+                        }
+                    } catch (Exception e) {
+                        // Corrupted line? Skip it instead of crashing the whole app
+                        System.out.println("Warning: Skipping corrupted line: " + line);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -83,8 +97,10 @@ public class Storage {
     }
 
     // This logic parses the "T | 1 | description" format back into objects
-    private Task parseTask(String line) throws VaticanException {
+    private Task parseTask(String line) {
         String[] parts = line.split(" \\| ");
+        if (parts.length < 3) return null; // Basic validation
+
         String type = parts[0];
         boolean isDone = parts[1].equals("1");
         Task task;
@@ -94,9 +110,11 @@ public class Storage {
             task = new Todo(parts[2]);
             break;
         case "D":
+            if (parts.length < 4) return null;
             task = new Deadline(parts[2], parts[3]);
             break;
         case "E":
+            if (parts.length < 5) return null;
             task = new Event(parts[2], parts[3], parts[4]);
             break;
         default:

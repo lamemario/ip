@@ -15,6 +15,7 @@ import vatican.command.Command;
 import vatican.command.DeleteCommand;
 import vatican.command.ExitCommand;
 import vatican.command.MarkCommand;
+
 /**
  * Controller for the main GUI.
  */
@@ -30,16 +31,22 @@ public class MainWindow extends AnchorPane {
 
     private Vatican vatican;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/sga.png"));
-    private Image vaticanImage = new Image(this.getClass().getResourceAsStream("/images/drizzy.png"));
+    // Safer Image Loading (prevents crash if image is missing)
+    private final Image userImage = loadImage("/images/sga.png");
+    private final Image vaticanImage = loadImage("/images/drizzy.png");
 
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        // Focus on text box immediately
+        userInput.requestFocus();
     }
 
     public void setVatican(Vatican v) {
         vatican = v;
+        // Assertion requirement
+        assert vatican != null : "Vatican instance cannot be null initialization";
+
         dialogContainer.getChildren().add(
                 DialogBox.getVaticanDialog(
                         "More life. It's Vatican, dun know.\nSo, what's the deal? I'm tryna see how I can bless you.",
@@ -53,66 +60,80 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
 
-        // 1. Wasteyute Check (Empty Input)
+        // 1. Empty Input Check
         if (input.trim().isEmpty()) {
-            dialogContainer.getChildren().add(
-                    DialogBox.getVaticanDialog(
-                            "you're saying nothing. Don't be a wasteyute.",
-                            vaticanImage,
-                            true // Force Error style
-                    )
-            );
-            userInput.clear();
+            handleEmptyInput();
             return;
         }
 
-        // 2. Execute Logic (Get text response)
+        // 2. Execute Logic & Determine Style
         String response = vatican.getResponse(input);
+        String commandType = getCommandType(input);
+        boolean isError = commandType.equals("Error");
 
-        // 3. Determine Style (Type-Safe!)
-        String commandType = "Normal";
-        boolean isError = false;
-
-        try {
-            Command c = Parser.parse(input); // Check the command type
-
-            if (c instanceof AddCommand) {
-                commandType = "Add"; // Blue
-            } else if (c instanceof DeleteCommand) {
-                commandType = "Delete"; // Orange
-            } else if (c instanceof MarkCommand) {
-                commandType = "Mark"; // Green
-            } else if (c instanceof ExitCommand) {
-                commandType = "Delete"; // Orange (Exit shares Delete style)
-            }
-            // ListCommand and FindCommand default to "Normal" (White)
-
-        } catch (VaticanException e) {
-            isError = true;
-            commandType = "Error"; // Red
-        }
-
-        // 4. Update GUI
-        dialogContainer.getChildren().add(
-                DialogBox.getUserDialog(input, userImage)
+        // 3. Update GUI
+        dialogContainer.getChildren().addAll(
+                DialogBox.getUserDialog(input, userImage),
+                createVaticanDialog(response, commandType, isError)
         );
 
-        DialogBox vaticanBox = DialogBox.getVaticanDialog(response, vaticanImage, isError);
-
-        // Apply specific style if it's not a generic error/normal message
-        if (!isError && !commandType.equals("Normal")) {
-            vaticanBox.changeDialogStyle(commandType);
-        }
-
-        dialogContainer.getChildren().add(vaticanBox);
         userInput.clear();
 
-        // 5. Exit Logic
+        // 4. Exit Logic
         if (input.trim().equalsIgnoreCase("bye")) {
-            javafx.animation.PauseTransition delay = new javafx.animation
-                    .PauseTransition(javafx.util.Duration.seconds(1.5));
-            delay.setOnFinished(event -> javafx.application.Platform.exit());
-            delay.play();
+            triggerExit();
         }
+    }
+
+    /**
+     * Determines the visual style of the response based on the command type.
+     * This separates styling logic from the main handler (SLAP).
+     */
+    private String getCommandType(String input) {
+        try {
+            Command c = Parser.parse(input);
+            if (c instanceof AddCommand) return "Add";
+            if (c instanceof DeleteCommand) return "Delete";
+            if (c instanceof MarkCommand) return "Mark";
+            if (c instanceof ExitCommand) return "Delete"; // Exit shares Delete style
+            return "Normal";
+        } catch (VaticanException e) {
+            return "Error";
+        }
+    }
+
+    private void handleEmptyInput() {
+        dialogContainer.getChildren().add(
+                DialogBox.getVaticanDialog(
+                        "you're saying nothing. Don't be a wasteyute.",
+                        vaticanImage,
+                        true // Force Error style
+                )
+        );
+        userInput.clear();
+    }
+
+    private DialogBox createVaticanDialog(String response, String type, boolean isError) {
+        DialogBox box = DialogBox.getVaticanDialog(response, vaticanImage, isError);
+        if (!isError && !type.equals("Normal")) {
+            box.changeDialogStyle(type);
+        }
+        return box;
+    }
+
+    private void triggerExit() {
+        javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(
+                javafx.util.Duration.seconds(1.5)
+        );
+        delay.setOnFinished(event -> javafx.application.Platform.exit());
+        delay.play();
+    }
+
+    /**
+     * Helper to load images safely. Returns null if not found instead of crashing.
+     */
+    private Image loadImage(String path) {
+        var resource = this.getClass().getResourceAsStream(path);
+        return resource == null ? null : new Image(resource);
     }
 }
