@@ -23,6 +23,8 @@ public class TaskList {
      * @param loadedTasks The ArrayList of tasks loaded from storage.
      */
     public TaskList(ArrayList<Task> loadedTasks) {
+        // ASSERTION: Cannot initialize with a null list
+        assert loadedTasks != null : "Cannot initialize TaskList with null tasks";
         this.tasks = loadedTasks;
     }
 
@@ -31,6 +33,8 @@ public class TaskList {
      * @param task The task object to be added.
      */
     public void addTask(Task task) {
+        // ASSERTION: Ensure we don't add null tasks
+        assert task != null : "Cannot add a null task to the list";
         tasks.add(task);
     }
 
@@ -39,6 +43,8 @@ public class TaskList {
      * @param index The zero-based index of the task to remove.
      */
     public void deleteTask(int index) {
+        // ASSERTION: Index must be within valid bounds
+        assert index >= 0 && index < tasks.size() : "Delete index out of bounds";
         tasks.remove(index);
     }
 
@@ -47,6 +53,8 @@ public class TaskList {
      * @param index The zero-based index of the task to mark.
      */
     public void markTask(int index) {
+        // ASSERTION: Index must be within valid bounds
+        assert index >= 0 && index < tasks.size() : "Mark index out of bounds";
         Task task = tasks.get(index);
         task.markAsDone();
     }
@@ -56,6 +64,8 @@ public class TaskList {
      * @param index The zero-based index of the task to unmark.
      */
     public void unmarkTask(int index) {
+        // ASSERTION: Index must be within valid bounds
+        assert index >= 0 && index < tasks.size() : "Unmark index out of bounds";
         Task task = tasks.get(index);
         task.markAsNotDone();
     }
@@ -66,6 +76,8 @@ public class TaskList {
      * @return The Task object at the specified index.
      */
     public Task getTask(int index) {
+        // ASSERTION: Index must be within valid bounds
+        assert index >= 0 && index < tasks.size() : "Get task index out of bounds";
         return tasks.get(index);
     }
 
@@ -75,6 +87,7 @@ public class TaskList {
      * @return An ArrayList of matching tasks.
      */
     public ArrayList<Task> find(String keyword) {
+        assert keyword != null : "Search keyword cannot be null";
         ArrayList<Task> matchingTasks = new ArrayList<>();
         for (Task t : this.tasks) {
             if (t.getDescription().contains(keyword)) {
