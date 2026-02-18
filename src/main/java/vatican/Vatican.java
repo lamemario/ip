@@ -27,6 +27,9 @@ public class Vatican {
      * @param filePath The path to the file where tasks are saved.
      */
     public Vatican(String filePath) {
+        // ASSERTION: Ensure the file path provided is valid
+        assert filePath != null && !filePath.isEmpty() : "File path cannot be null or empty";
+
         ui = new Ui();
         storage = new Storage(filePath);
         try {
@@ -41,6 +44,11 @@ public class Vatican {
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {
+        // ASSERTION: Ensure critical components are initialized before processing input
+        assert ui != null : "UI should be initialized";
+        assert storage != null : "Storage should be initialized";
+        assert taskList != null : "TaskList should be initialized";
+
         try {
             java.io.ByteArrayOutputStream outContent = new java.io.ByteArrayOutputStream();
             java.io.PrintStream originalOut = System.out;
