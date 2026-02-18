@@ -85,7 +85,7 @@ public class Storage {
                             loadedTasks.add(t);
                         }
                     } catch (Exception e) {
-                        // Corrupted line? Skip it instead of crashing the whole app
+                        // Corrupted line? Skip it instead of crashing the whole app.
                         System.out.println("Warning: Skipping corrupted line: " + line);
                     }
                 }
@@ -96,10 +96,12 @@ public class Storage {
         return loadedTasks;
     }
 
-    // This logic parses the "T | 1 | description" format back into objects
-    private Task parseTask(String line) {
+    // UPDATED: Added 'throws VaticanException' here to fix the build error
+    private Task parseTask(String line) throws VaticanException {
         String[] parts = line.split(" \\| ");
-        if (parts.length < 3) return null; // Basic validation
+        if (parts.length < 3) {
+            return null; // Basic validation
+        }
 
         String type = parts[0];
         boolean isDone = parts[1].equals("1");
@@ -110,11 +112,15 @@ public class Storage {
             task = new Todo(parts[2]);
             break;
         case "D":
-            if (parts.length < 4) return null;
+            if (parts.length < 4) {
+                return null;
+            }
             task = new Deadline(parts[2], parts[3]);
             break;
         case "E":
-            if (parts.length < 5) return null;
+            if (parts.length < 5) {
+                return null;
+            }
             task = new Event(parts[2], parts[3], parts[4]);
             break;
         default:
