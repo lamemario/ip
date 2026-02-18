@@ -35,6 +35,10 @@ public class MainWindow extends AnchorPane {
     private final Image userImage = loadImage("/images/sga.png");
     private final Image vaticanImage = loadImage("/images/drizzy.png");
 
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the FXML file has been loaded.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
@@ -92,10 +96,18 @@ public class MainWindow extends AnchorPane {
     private String getCommandType(String input) {
         try {
             Command c = Parser.parse(input);
-            if (c instanceof AddCommand) return "Add";
-            if (c instanceof DeleteCommand) return "Delete";
-            if (c instanceof MarkCommand) return "Mark";
-            if (c instanceof ExitCommand) return "Delete"; // Exit shares Delete style
+            if (c instanceof AddCommand) {
+                return "Add";
+            }
+            if (c instanceof DeleteCommand) {
+                return "Delete";
+            }
+            if (c instanceof MarkCommand) {
+                return "Mark";
+            }
+            if (c instanceof ExitCommand) {
+                return "Delete"; // Exit shares Delete style
+            }
             return "Normal";
         } catch (VaticanException e) {
             return "Error";
