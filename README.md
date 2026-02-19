@@ -1,7 +1,5 @@
 # 🦉 Vatican // The 6ix Side Assistant
 
-Check out the live **[User Guide Here](https://lamemario.github.io/ip/)**!
-
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![JavaFX](https://img.shields.io/badge/GUI-JavaFX-blue)
 ![Build](https://img.shields.io/badge/Build-Gradle-green)
@@ -9,6 +7,8 @@ Check out the live **[User Guide Here](https://lamemario.github.io/ip/)**!
 **Vatican** is a desktop task management application optimised for use via a Command Line Interface (CLI) but wrapped in a modern, reactive **JavaFX GUI**.
 
 It features a unique **Toronto wasteyute persona** that manages your productivity. It roasts you for errors and blesses you for productivity.
+
+Check out the live **[User Guide Here](https://lamemario.github.io/ip/)**!
 
 ---
 
