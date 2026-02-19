@@ -5,6 +5,7 @@ import vatican.command.Command;
 import vatican.command.DeleteCommand;
 import vatican.command.ExitCommand;
 import vatican.command.FindCommand;
+import vatican.command.HelpCommand;
 import vatican.command.ListCommand;
 import vatican.command.MarkCommand;
 import vatican.task.Deadline;
@@ -48,6 +49,8 @@ public class Parser {
             return prepareDeadline(parts);
         case EVENT:
             return prepareEvent(parts);
+        case HELP:
+            return new HelpCommand();
         default:
             throw new VaticanException("I don't know what that means. Nize that.");
         }

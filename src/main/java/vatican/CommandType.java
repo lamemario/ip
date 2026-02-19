@@ -4,7 +4,7 @@ package vatican;
  * Represents the various types of commands supported by the application.
  */
 public enum CommandType {
-    BYE, LIST, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, FIND, UNKNOWN;
+    BYE, LIST, MARK, UNMARK, TODO, DEADLINE, EVENT, DELETE, FIND, HELP, UNKNOWN;
 
     /**
      * Returns the CommandType corresponding to the given string.
