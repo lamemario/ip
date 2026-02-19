@@ -1,5 +1,7 @@
 # 🦉 Vatican // The 6ix Side Assistant
 
+Check out the live **[User Guide Here](https://lamemario.github.io/ip/)**!
+
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![JavaFX](https://img.shields.io/badge/GUI-JavaFX-blue)
 ![Build](https://img.shields.io/badge/Build-Gradle-green)
