@@ -3,6 +3,7 @@ package vatican.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 import vatican.VaticanException;
 
@@ -32,8 +33,9 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
+        // Enforce English Locale to prevent '?' characters in month abbreviations
         return "[D]" + super.toString() + " (by: "
-                + by.format(DateTimeFormatter.ofPattern("MMM dd yyyy")) + ")";
+                + by.format(DateTimeFormatter.ofPattern("MMM dd yyyy", Locale.ENGLISH)) + ")";
     }
 
     /**
@@ -43,7 +45,6 @@ public class Deadline extends Task {
      */
     @Override
     public String toFileFormat() {
-        // Ensure 'by' is treated as a String
         return "D | " + super.toFileFormat() + " | " + by.toString();
     }
 }
